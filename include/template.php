@@ -36,6 +36,7 @@
 
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="index.php">Home</a></li>
+                            <li><a href="index.php?&action=listChapters">Chapters</a></li>
                             <li><a href="index.php?action=contact">Contact</a></li>
                         </ul>
 
@@ -43,7 +44,37 @@
                 </div><!-- /.container-fluid -->
             </nav>
 
-
+        
+                <div id="login">
+                    <form action="index.php?action=<?php
+                    if(isset($_SESSION['name']))
+                    {
+                        echo 'signOut';
+                    }
+                    else
+                    {
+                        echo 'signIn';
+                    }
+                    ?>"
+                    method="post">
+                        <input type="text" placeholder="username" name="loginName" class="username">
+                        <input type="password" placeholder="password" name="loginPassword" class="password">
+                        
+                        <input type="submit" name="signIn" class="signIn" value="<?php if(isset($_SESSION['name'])){echo 'Sign out';} else{ echo 'Sign in';}?>">
+                    </form>
+                         
+                    <?php
+                    if(!isset($_SESSION['name']))
+                    {
+                    ?>
+                        <form action="index.php?action=register" method="post">
+                            <button type="submit" class="register">Register <i class='fas fa-user-plus'></i></button>
+                        </form>  <br />
+                    <?php    
+                    }
+                    ?>
+                </div>
+       
             <?= $content; ?>
        
 
@@ -54,6 +85,7 @@
        
         </body>
     </div>
+
     <div id="footer">
         <footer>
             <div class="footer"><a href="http://facebook.com"><i class="fab fa-facebook-square"></i></a><a href="https://twitter.com"><i class="fab fa-twitter"></i></a><a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
@@ -61,6 +93,7 @@
             <span class="nameFooter">© 2018 Paul WHITTAKER Ltd </span><a href="index.php?action=admin" class="adminLink">Admin</a></div>
         </footer>
     </div>
+
 </div>
 </html>
 

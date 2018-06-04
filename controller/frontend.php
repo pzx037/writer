@@ -3,18 +3,14 @@
 
 include_once('C:/wamp64/www/writer/model/ChapterManager.php');
 include_once('C:/wamp64/www/writer/model/CommentManager.php');
-include_once('C:/wamp64/www/writer/model/InscriptionManager.php');
-include_once('C:/wamp64/www/writer/model/AdminManager.php');
-
-
 
 
         function listChapters()
         {
             $ChapterManager = new ChapterManager();
+            $CommentManager = new CommentManager();
 
-            $dropList = $ChapterManager->dropDown();
-
+            $chapters = $ChapterManager->getchapters();
             include('C:/wamp64/www/writer/view/frontend/listChaptersView.php');
         }
 
@@ -22,27 +18,25 @@ include_once('C:/wamp64/www/writer/model/AdminManager.php');
         {
             $ChapterManager = new ChapterManager();
             $CommentManager = new CommentManager();
-
-            $dropList = $ChapterManager->dropDown();
-            $chapterShow = $ChapterManager->showChapter($_POST['chapterTitle']);
             
+            $chapter = $ChapterManager->getChapter($_GET['chapterId']);
+            $chapterComments = $CommentManager->getComments($_GET['chapterId']);
 
-            include('C:/wamp64/www/writer/view/frontend/listChaptersView.php');
+            include('C:/wamp64/www/writer/view/frontend/readView.php');
         }
 
         //Add a comment
-        function addComment()
+        function addComment($chapterId, $chapterComment)
         {
             $CommentManager = new CommentManager();
-
-            $addPost = $CommentManager->postComment();
-
-            include('C:/wamp64/www/writer/view/frontend/listChaptersView.php');   
-            
+            $addComment = $CommentManager->addComment($chapterId, $chapterComment);
+            header('Location: index.php?action=loadChapter&chapterId=' . $chapterId);
         }
-
     
-
+        function landingPage()
+        {
+            include('C:/wamp64/www/writer/view/frontend/landingPageView.php');
+        }
 
 
 

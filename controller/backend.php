@@ -19,7 +19,7 @@ include_once('C:/wamp64/www/writer/model/AdminManager.php');
 
         $dropList = $ChapterManager->dropDown();
         $members = $AdminManager->getMembers();
-        $adminComments = $CommentManager->getAdminComments();
+        $adminComments = $AdminManager->getAdminComments();
 
         include('C:/wamp64/www/writer/view/backend/adminView.php'); 
     }
@@ -28,11 +28,11 @@ include_once('C:/wamp64/www/writer/model/AdminManager.php');
     {
         $ChapterManager = new ChapterManager;
         $AdminManager = new AdminManager;
-        $CommentManager = new CommentManager;
+        
 
         $dropList = $ChapterManager->dropDown();
         $members = $AdminManager->getMembers();
-        $adminComments = $CommentManager->getAdminComments();
+        $adminComments = $AdminManager->getAdminComments();
         $chapterShow = $ChapterManager->showChapter($_POST['chapterTitle']);
 
 

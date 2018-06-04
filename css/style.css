@@ -44,15 +44,22 @@
     }
     #preambleSetup > div > p
     {
-
         width: 100%;
         height: 120px;
         margin: 0;
         font-size: 20px;
+        overflow: auto;
     }
 }
 
-
+@media (max-width: 992px)
+{
+   #body > div > div > div.col-md-9 > div, #body > div > div > div.col-md-3
+    {
+        transform: scale(0.8);
+        padding: 5px;
+    }
+}
 @media (max-width: 900px)
 {
     #topTitle > h1
@@ -68,31 +75,12 @@
         width:100%;
         margin:0;
     }
-     h1
+
+    #topSection > header > h1
     {
-        font-size: 40px;
+        font-size: 45px;
         height: auto;
     }
-    .listChapters
-    {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap-reverse;
-    }
-    
-
-  
-
-     #adminPage > form.tinyMceForm > div.input_title_admin
-    {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;   
-        padding:5px;
-        margin: 0;
-    }
-   
-  
     #preambleSetup > div
      {
         text-align: center;
@@ -102,6 +90,21 @@
     {
         font-family:   arial, sans-serif;
         font-size: 15px;
+    }
+
+    #adminPage > form
+    {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap-reverse;
+    }
+     #mceForm > form > div.inputTitleAdmin
+    {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;   
+        padding:5px;
+        margin: 0;
     }
     .footer
     {
@@ -117,7 +120,7 @@
 
 @media (max-width: 480px)
 {
-    #topTitle > h1
+    #topSection > header > h1
     {
         font-size: 40px;
     }
@@ -136,15 +139,7 @@
     {
         margin-top: 5px;
     }
-
-   .button_load_admin
-    {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap-reverse;
-    }
-
-        .loadButton
+    .loadButton
     {
         margin-bottom: 5px;
     }
@@ -164,7 +159,7 @@
     }
 }
 
-@media (max-width: 348px)
+@media (max-width: 366px)
 {
    #topTitle > h1
     {
@@ -181,23 +176,26 @@
     {
            display:none;
     }
-
+    #topLine > div > div > div.col-sm-6.col-sm-push-1.col-xs-12 > div > form
+    {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap-reverse;
+    }
+    
+    .readableTitle
+    {
+        min-width: 60%;
+        max-width: 70%;
+    }
     #formContact > form > input.username, #formContact > form > input.email, #formContact > form > textarea, #formContact > form > input.submit,
     #formLogIn > form > input.username, #formLogIn > form > input.password, #formLogIn > form > input.logIn,
     #formInscription > form > input.username, #formInscription > form > input.email, #formInscription > form > input:nth-child(7), #formInscription > form > input:nth-child(10), #formInscription > form > input.submit, .readableTitle
     {
         width: 80%;
     }
-    .readableTitle
-    {
-        min-width: 60%;
-        max-width: 70%;
-    }
+
 }
-
-
-
-
 
 
 
@@ -214,20 +212,15 @@ body
     width:80%;
     height:100%;
     margin: 0 auto 0 auto;
-    padding-bottom: 60px;
-    background: #232323;
-    
+    background: #232323;   
 }
+
 #container
 {
     min-height: 100%;
     position: relative;
 }
-#body
-{
-    
-   
-}
+
 #footer
 {
     position: absolute;
@@ -240,29 +233,138 @@ body
    
 }
 
-
-#body > nav > div
+body
 {
-    background: #729284 ;
+    background-color: #010101;
 }
 
+/* landing page */
 
+#landing
+{
+    background: url('../images/landing.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;    
+    width:100%;
+    height:100%;
+}
+.fakeNavbar
+{
+    height: 60px;
+    line-height: 60px;
+    background-color: #172A3A; 
+    text-align: center;
+}
+#landing > div.fakeNavbar > a
+{
+    font-family: 'alex_brushregular',  arial, sans-serif;
+    font-size: 30px;
+    color: #ffffff;
+    text-decoration: none;
+}
+#landing > div.fakeNavbar > a:hover
+{
+    color: tomato;
+}
+#body > div > div > div.col-md-3
+{
+    padding-top: 25%;
+    text-align: center;
+}
+ 
+ /*character */
+#cendrars
+{
+    width: 170px;
+    height: 170px;
+    text-align: center;
+    border-radius: 100px;
+}
+#body > div > div > div.col-md-3 > p
+{
+    font-family: 'alex_brushregular',  arial, sans-serif;
+    font-size: 25px;
+    color: #ffffff;
+}
 
+/* title and quote*/
+.content
+{
+    text-align: center;
+    text-shadow: 0px 3px 2px rgba(0,0,0,0.4),
+                 0px 7px 12px rgba(0,0,0,0.1),
+                 0px 16px 19px rgba(0,0,0,0.1);    
+    
+    padding-top: 30%;
+}
 
+#body > div > div > div.col-md-9 > div > div > h1
+{
+    color: #000000;
+    font-weight: 700;
+    padding-top: 0;
+}
+.backgroundTitle
+{
+    background-color: #f1f1f1;
+    border-radius: 15px;
+    padding: 15px;
+    opacity: 0.9;
+    box-shadow: inset 0 0 15px;
+}
+#body > div > div > div.col-md-9 > div > div > blockquote > span
+{
+    color: #6b6b6b;
+    font-size: 15px;
+    font-weight: 700;
+    margin-left: 60%;
+    text-shadow: none;
+}
+blockquote
+{
+    padding:5px;
+    font-weight: 600;
+}
+hr 
+{
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+/* button -- start reading -- */ 
+#body > div > div > div.col-md-9 > div > div > a > button
+{
+    background-color:#20b2aa;
+    color:#ffffff;
+}
 
 
 /* Bootstrap navbar */
 
+#body > nav > div
+{
+    background-color: #172A3A;
+}
+#bs-example-navbar-collapse-1
+{
+    text-align: center;
+    background-color: #172A3A;
+}
 #bs-example-navbar-collapse-1 > ul > li > a, .navbar-brand
 {
     font-family: 'alex_brushregular',  arial, sans-serif;
     font-size: 25px;
     color:#ffffff;
 }
-
-#bs-example-navbar-collapse-1 > ul > li > a:hover
+.navbar-default .navbar-brand:hover
 {
-    color: tomato;
+    color:tomato;
+}
+
+#bs-example-navbar-collapse-1 > ul > li:hover > a
+{
+    color:tomato;
 }
 
 /* hamburger */
@@ -271,27 +373,74 @@ body
     border: none;
     
 }
-
 .navbar-default .navbar-toggle .icon-bar
 {
-    background-color: #000000;
+    background-color: #ffffff;
 }
-
 .navbar-default .navbar-brand 
 {
     color: #ffffff;
 }
-.navbar-default .navbar-brand:hover
-{
-    color:tomato
-}
-
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover
 {
     background-color: transparent;
     box-shadow: none;
 }
 
+#body > nav
+{
+    border: 0;
+    margin-bottom: 0;
+}
+#login > form:nth-child(1), #login > form:nth-child(2)
+{
+    transform: scale(0.8);
+}
+
+
+/* Login Register form*/
+
+#login > form > input.logIn
+{
+    color:#ffffff;
+    border: 0;
+    box-shadow: none;
+}
+#login > form > input.logIn:hover
+{
+    color:tomato
+}
+#login
+{
+    
+    background-color: #172A3A;
+    min-height: 60px;
+}
+#login > form
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+#login > form > input, #login > form > button
+{
+    margin: 5px;
+} 
+
+.signReg
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.signIn, .register
+{
+    background-color: #20b2aa;
+    color: #ffffff;
+    font-weight: bold;
+    width: 110px;
+    
+}
 
 
 
@@ -321,48 +470,22 @@ h2
     color:#ffffff;
 }
 
-
-/* Dropdown and buttons under title home page */
-
 #topLine
 {
-    height:auto;
-    padding: 20px 0 20px 0;
-    background-color: #E0E4E3;
-}
-.listChapters
-{
-    display: flex;
-    justify-content: center;     
-}
-.chapterTitle, #chapterTitle
-{
-    max-width: 150px;
-}
-.signReg
-{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-.signIn, .register
-{
-    background-color: #20b2aa;
-    color: #ffffff;
-    font-weight: bold;
-    width: 110px;
-    margin:5px;
+    height: 20px;
+    background-color: #E3E7E6;
+    background: url('../images/banner1.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
-/* Text box home page */
+
+
+/* Text box listChapters page */
 
 #preambleSetup
 {
-    border: 2px solid #a1a3a3;
-    border-radius: 2px;
-    box-shadow: 0 2px #fff;
-    box-sizing: border-box;
-    background-color: #739385;
+    background-color: #172A3A;
 }
 
 /* Text home page */
@@ -370,9 +493,9 @@ h2
 .preambleText
 {
     font-family: 'delius_swash_capsregular', arial, sans-serif;
+    color:#ffffff;
     font-size: 25px;
     font-style: italic;
-    font-weight: bold;
     text-align: center;
     width: 90%;
     margin:auto;
@@ -383,16 +506,36 @@ h2
     margin-top: 0;
     margin-bottom: 0;
 }
+#chapters > article > div
+{
+    margin: 0;
+}
+.chapterPreview
+{
+    background-color: #ffffff; 
+}
 
+#chapters > article > div
+{
+    background-color: #74B3CE;
+    padding: 50px;
+}
+
+
+
+/* readView page */
 
 /* Title and chapter to be read by user */
+
+
 #toRead
 {
-    background: url('../images/pen.jpg')no-repeat fixed;
+    background: #73B2CD url('../images/pen.jpg') no-repeat fixed;
     padding-bottom: 40px;
 }
 #readableContent
 {
+    
     text-align: center;
 }
 .readableTitle
@@ -401,22 +544,94 @@ h2
     text-align: center;
     min-width: 20%;
     padding:5px;
-
     background-color: #ffffff;
-    margin: 30px 0 20px 0;
+    margin-bottom: 20px;
 }
 .readableChapter
 {
-    font-family: 'alex_brushregular',  arial, sans-serif;
-    font-size: 30px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
     font-style: italic;
     text-align: center;
     min-width: 60%;
     max-width: 70%;
     min-height: 300px;
-    margin:0 0 100px;
+    margin-bottom: 20px;
     padding:15px;
     opacity: 0.8;
+}
+
+
+/* comments */
+
+/* add a comment button */
+#toRead > article:nth-child(2) > div > div > div:nth-child(1) > form > label
+{
+    margin-left: 5px;
+}
+#toRead > article:nth-child(2) > div > div > div:nth-child(1) > form > input.submitcomment
+{
+    text-align: center;
+    background-color: #20b2aa;
+    color: #ffffff;
+    font-weight: bold;
+    width: 100px;
+    margin: 10px 0 0 10px;
+}
+#toRead > article:nth-child(2) > div > div > div
+{
+    margin-bottom: 25px;
+}
+.dialogbox .body 
+{
+    position: relative;
+    max-width: 400px;
+    height: auto;
+    background-color: #DADADA;
+    border-radius: 3px;
+    border: 5px solid #ccc;
+}
+
+.body .message 
+{
+    color: #797979;
+    font-family: Arial;
+    font-size: 14px;
+    text-align: left;
+    min-height: 30px;
+    line-height: 1.5;
+    padding-left: 5px;
+    border-radius: 3px;   
+}
+.tip 
+{
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    background: transparent;
+    border: 10px solid #ccc;
+}
+
+.tip-left 
+{
+    top: 10px;
+    left: -25px;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;  
+}
+
+#toRead > article:nth-child(2) > div > div > div:nth-child(1) > h4, #toRead > article:nth-child(2) > div > div > div:nth-child(2) > h4
+{
+    color: #000000;
+    font-weight:600;
+    margin-top: 0;
+}
+#toRead > article:nth-child(2) > div > div > div:nth-child(1) > form > input.yourThoughts
+{
+    max-width: 95%;
+    margin: 0 5px 0 5px; 
+    padding:5px;
 }
 
 /* Date the chapter was written */
@@ -442,13 +657,14 @@ h2
 #registrationPage
 {
     height: 100%;
-    background-color: #E3E7E6;
+    background-color: #74B3CE;
     padding-top: 50px;
 }
-.subTitleRegistration
+#registrationPage > div.subTitleRegistration
 {
     font-family: 'alex_brushregular',  arial, sans-serif;
     font-size: 40px;
+    font-weight: 700;
     text-align:center;
     width:60%;
     margin: auto;
@@ -460,24 +676,9 @@ h2
 
 
 
-/* connexionView */
-
-#logInPage
-{
-    height: 100%;
-    background-color: #E3E7E6;
-    padding-top: 50px;
-}
 
 
-/* Connexion form*/
 
-.forgot
-{
-    font-size: 12px;
-    margin-top: 5px;
-    float: right;
-}
 
 
 
@@ -491,7 +692,7 @@ h2
 #errorPage
 {
     height: 100%;
-    background-color: #E3E7E6;
+    background-color: #74B3CE;
     padding-top: 50px;
 }
 .messageError
@@ -515,13 +716,9 @@ h2
 #adminPage
 {
     height: 100%;
-    background-color: #E3E7E6;
-    padding: 20px;
+    background-color: #74B3CE;
 }
-.session_name
-{
-    margin-top: -20px;
-}
+
 #admin_title_buttons
 {
     display: flex;
@@ -534,7 +731,7 @@ h2
 }
 .adminSubTitle
 {
-    padding-top: 10px;
+    padding-top: 25px;
 }
 .inputTitleAdmin
 {
@@ -544,16 +741,27 @@ h2
 }
 #chapterTitle
 {
-    margin-left: 10px;
+    max-width:150px;
+    margin-left: 10px;      
 }
-#adminPage > form.tinyMceForm > div.inputTitleAdmin > label
+#mceForm > form > div.inputTitleAdmin > label
+
 {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: normal;
     padding: 5px 5px 0 0;
 }
 .tinySave, .tinyUpdate, .tinyDelete
 {
     margin: 0 5px 0 5px;
 }
+#mceForm
+{
+    height:auto;
+    padding:20px;
+}
+
 
 .adminTables
 {
@@ -582,6 +790,7 @@ h4
     text-align: center;
 }
 
+
 /* Confirm delete buttons */
 
 .confirm, .delete
@@ -600,11 +809,9 @@ h4
 #contactPage
 {
     height:100%;
-    background-color: #E3E7E6;
-    padding-top: 20px;
+    background-color: #74B3CE;
+    padding-top: 5%;
 }
-
-
 
 
 
@@ -620,10 +827,23 @@ h4
 h3
 {
     font-family: 'sf_burlington_scriptregular', arial, sans-serif;
+       
     font-size: 40px;
-    font-weight: bold;
     text-align:center;
     margin:0;
+}
+#adminPage > h3
+{
+    color:#ffffff;
+}
+#chapters > article > div > div > div > div > div > p:nth-child(1)
+{
+    text-align: right;
+}
+#chapters > article > div > div > div > div > p > em > a
+{
+    color: #42c8f4;
+
 }
 
 /* Forms*/
@@ -646,7 +866,7 @@ textarea
     padding:10px;
 }
 
-#formInscription, #formLogIn, #formContact
+#formInscription, #formContact
 {
     max-width:270px;
     text-align: center;
@@ -672,6 +892,17 @@ textarea
     margin: 20px auto auto;
 }
 
+/* successfull message admin page */
+#setTime
+{
+    display: block;
+    height:50px;
+    padding: 15px;
+    font-weight:bold;
+    color:#ffffff;
+    background-color: #74B3CE; 
+}
+
 
 
 
@@ -680,7 +911,8 @@ textarea
 
 footer
 {
-    background-color: #f1f1f1;
+    background-color: #1D2E3D;
+    color: #ffffff;
     text-align: center;
     font-size: 25px;
     letter-spacing: 3px;
@@ -693,7 +925,7 @@ footer
 
 #footer > footer > div > a > i
 {
-    padding: 5px;
+    padding: 0 5px 0 5px;
 }
 
 .adminLink

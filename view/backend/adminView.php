@@ -8,7 +8,7 @@
         <script>
             tinymce.init({
                 selector:'textarea',
-                height:400,
+                height:300,
                 plugins:[
                     'advlist autolink lists image charmap print preview anchor textcolor',
                     'searchreplace visualblocks code fullscreen',
@@ -25,12 +25,14 @@
 
 
 <section id="topSection">
-
-    <header>
+    
+    <article>
         <h1 class="session_name"><?= 'Welcome ' . $_SESSION['name'];?></h1>
-    </header>
-
+    </artcle>
+    
 </section>
+
+        <div id="topLine"></div>
 
 <section id="adminPage">
 
@@ -171,10 +173,10 @@
 
     <br /><br />
 
-
+</section>
 
 <?php $content = ob_get_clean(); ?>
 
-</section>
+
 
 <?php require 'include/template.php'; ?>

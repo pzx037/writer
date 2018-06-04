@@ -4,38 +4,26 @@ require_once ('AdminManager.php');
 
 class CommentManager extends Manager
 {
-     function getAdminComments()
+    
+   function getComments($chapterId)
     {
-        $db = $this->getDb();
+     $db = $this->getDb();
 
-        $adminComments = $db->query('SELECT comments.id, comments.id_member, comments.id_member, comments.content, comments.confirmed, DATE_FORMAT(comments.comment_date, \'%d-%m-%Y at %Hh%m\') AS comment_date, members.name
-                                     FROM members
-                                     INNER JOIN comments ON comments.id_member = members.id
-                                     WHERE comments.confirmed = 0 ORDER BY comments.comment_date DESC ');
-
-        return $adminComments;
+        $chapterComments = $db->query('SELECT id, content, DATE_FORMAT(comment_date, \'%a the %D of %b  at %Hh%m\') AS comment_date FROM comments WHERE id_chapter = "' .$chapterId. '" ORDER BY id DESC LIMIT 0,6');
+        
+        return $chapterComments;
     }
 
+    //add a comment 
+    function addComment($chapterId, $chapterComment)
+        {
+       
+            $db = $this->getDb();
 
-    function confirmComment($confirmComment)
-    {
-        $db = $this->getDb();
+            $req = $db->prepare('INSERT INTO comments (id_chapter, content, confirmed, comment_date) VALUES(?, ?, 0, NOW())');
+            $req->execute(array($chapterId, $chapterComment));
+        }
 
-        $req = $db->prepare('UPDATE comments SET confirmed = 1 WHERE id = :id');
-        $req->bindValue(':id', $confirmComment, PDO::PARAM_INT);
-
-        $req->execute();
-    }
 
     
-
-    function deleteComment($deleteComment)
-    {
-        $db = $this->getDb();
-
-        $req = $db->prepare('DELETE FROM comments WHERE id = :id');
-        $req->bindValue(':id', $deleteComment, PDO::PARAM_INT);
-
-        $req->execute();
-    }
 }

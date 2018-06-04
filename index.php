@@ -15,12 +15,11 @@ try
             listChapters();
         }
 
-        elseif($_GET['action'] == 'signIn')
-        {
-            require('view/frontend/connexionView.php');
-        }
-
-        elseif($_GET['action'] == 'logIn')
+    elseif($_GET['action'] == 'landing')
+    {
+        require('C:/wamp64/www/writer/view/frontend/landingPageView.php');
+    }
+       elseif($_GET['action'] == 'signIn')
         {
             if(!empty($_POST['loginName']) || !empty($_POST['loginPassword']))
             {
@@ -52,12 +51,12 @@ try
         elseif($_GET['action'] == 'signOut')
         {
             session_destroy();
-            header('Location: index.php?action=listChapters');
+            header('Location: index.php');
         }
 
         elseif($_GET['action'] == 'register')
         {
-            require('view/frontend/inscriptionView.php');
+            require('C:/wamp64/www/writer/view/frontend/inscriptionView.php');
         }
 
 
@@ -133,21 +132,49 @@ try
                 }
         }
 
+        // Gets a chapter with its comments
+        elseif ($_GET['action'] == 'loadChapter') 
+        {
+            if(isset($_SESSION['name']))
+            { 
+                if (isset($_GET['chapterId']) && $_GET['chapterId'] > 0)
+                {
+
+                    loadChapter();
+                }
+                else
+                {
+                    throw new Exception('Error : No Id sent');
+                }
+            }
+            else
+            {
+                throw new Exception('Error : You must be connected to read the rest');
+                
+            }
+        }
+
         elseif($_GET['action'] == 'addComment')
         {
             if(isset($_SESSION['name']))
             {
-                
-                    if (!empty($_POST['addComment']))
+                if (isset($_GET['chapterId']) && $_GET['chapterId'] > 0)
+                {
+                    if (!empty($_POST['chapterComment']))
                     {
-                        addComment($_POST['addComment']);
+                      
+                        addComment($_GET['chapterId'], $_POST['chapterComment']);
+                        
                     }
                     else
                     {
-                        throw new Exception('Error : Your comment could not be added !');
+                        throw new Exception('Error : Your must write a comment for it to be added !');
                     }
-                
-                
+                }
+                else
+                {
+                    throw new Exception('Error : No Id sent');
+                }
             }
             else
             {
@@ -156,14 +183,6 @@ try
         }
 
  
-        // Fills the dropDown and gets chapter and comments for listChaptersView
-        elseif($_GET['action'] == 'loadChapter')
-        {
-
-            loadChapter();
-           
-        }
-
         // Gets adminComments, Members and dropdown for adminView
         elseif($_GET['action'] == 'admin')
         {
@@ -173,17 +192,17 @@ try
             }
             else
             {
-
                 throw new Exception('Error : You must be the administrator to access this page');
-
             }
         }
 
-        // Gets the chosen chapter, members and adminComments
         elseif($_GET['action'] == 'load')
         {
             load();
         }
+
+        // Gets the chosen chapter, members and adminComments
+       
 
         /* Confirm a member */
         elseif($_GET['action'] == 'confirm')
@@ -336,10 +355,10 @@ try
         }
 
     }
-    // Fills the dropdown for listChaptersView
+    // Returns to the landing page
     else
     {
-        listChapters();
+        landingPage();
     }
 }
 
@@ -347,5 +366,5 @@ try
 catch(Exception $e)
 {
     $errorMessage = $e->getMessage();
-    require('view/frontend/errorView.php');
+    require('C:/wamp64/www/writer/view/frontend/errorView.php');
 }

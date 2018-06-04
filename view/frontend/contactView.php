@@ -8,6 +8,8 @@
     </article>
 </section>
 
+    <div id="topLine"></div>
+
 <section id="contactPage">
     <div id="formContact">
         <form action="index.php?action=contactForm" method="post">

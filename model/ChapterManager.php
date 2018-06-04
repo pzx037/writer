@@ -3,6 +3,58 @@ require_once ('Manager.php');
 
 class ChapterManager extends Manager
 {
+
+    /* USER */
+
+    function getChapters()
+    {
+        $db = $this->getDb();
+
+        $chapters = $db->query('SELECT id, title, LEFT(content,230) AS content, DATE_FORMAT(written_date, \'%a the %D of %b  at %Hh%m\') AS written_date  FROM chapters ORDER BY id ASC');
+
+        return $chapters;
+    }
+
+    function getChapter($chapterId)
+    {
+        $db = $this->getDb();
+
+        $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(written_date, \'%d-%m-%Y at %Hh%m\') AS written_date FROM chapters WHERE id = :chapterId');
+        $req->bindValue(':chapterId', $chapterId, PDO::PARAM_INT);
+        
+        $req->execute();
+        $chapter = $req->fetch();
+     
+        return $chapter;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* ADMIN */
+
     /**
      * recupere les chapitres pour listre celui selectionné par l'utilisateur
      *

@@ -5,8 +5,12 @@
 <?php ob_start() ?>
 
 <section id="topSection">
+      
       <h1>Registration</h1>
+
 </section>
+
+    <div id="topLine"></div>
 
 <section id="registrationPage">
     <div class="subTitleRegistration">Subscribe and get full access to the site</div>

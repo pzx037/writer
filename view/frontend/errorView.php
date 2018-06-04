@@ -9,6 +9,8 @@
 
 </section>
 
+    <div id="topLine"></div>
+
 <section id="errorPage">
 
         <div class="messageError">
@@ -21,22 +23,30 @@
                     {
                         ?><a href="index.php?action=register"> Try again</a><?php
                     }
-                        elseif($_GET['action'] == 'tinyMCE')
+                        elseif($_GET['action'] == 'signIn')
                         {
-                            ?><a href="index.php?action=admin"> Try again</a><?php
+                            ?><a href="index.php?action=listChapters"> Try again</a><?php
                         }
-                            elseif($_GET['action'] == 'addComment')
+                            elseif($_GET['action'] == 'loadChapter')
                             {
                                 ?><a href="index.php?action=listChapters"> Try again</a><?php
                             }
-                                elseif($_GET['action'] == 'logIn')
+                                elseif($_GET['action'] == 'addComment')
                                 {
-                                    ?><a href="index.php?action=signIn"> Try again</a><?php
+                                    ?><a href="index.php?action=loadChapter&amp;chapterId=<?=$chapter['id']; ?>"> Try again</a><?php
                                 }
-                                    elseif($_GET['action'] == 'confirm' || $_GET['action'] == 'delete' || $_GET['action'] == 'confirmComment' || $_GET['action'] == 'deleteComment')
+                                    elseif($_GET['action'] == 'tinyMCE')
                                     {
-                                        ?><a href="index.php?action=admin">Admin page </a> <?php
+                                        ?><a href="index.php?action=admin"> Try again</a><?php
                                     }
+                                        elseif($_GET['action'] == 'admin')
+                                        {
+                                            ?><a href="index.php?action=listChapters"> Try again</a><?php
+                                        }
+                                            elseif($_GET['action'] == 'confirm' || $_GET['action'] == 'delete' || $_GET['action'] == 'confirmComment' || $_GET['action'] == 'deleteComment')
+                                            {
+                                                ?><a href="index.php?action=admin">Admin page </a> <?php
+                                            }
                 }
           ?>
 
